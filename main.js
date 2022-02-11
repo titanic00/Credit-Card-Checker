@@ -23,12 +23,24 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3]
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5]
 
 
-// Add your functions below:
+function validateCred (array) {
+    let sumUp = 0;
+    let buffer = 0;
+    for (let i = array.length - 1; i >= 0; i--) {
+        if (i !== array.length - 1 && i % 2 === 0) {
+            buffer = array[i] * 2;
+            if (buffer > 9) {
+                buffer -= 9;
+            }
+            sumUp += buffer;
+            continue;
+        }
 
+        sumUp += array[i];
 
+        if (i === 0)
+            sumUp += array[i];
+    };
 
-
-
-
-
-
+    return sumUp % 10 === 0 ? true : false;
+};
