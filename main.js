@@ -46,3 +46,16 @@ function validateCred (array) {
 
     return sumUp % 10 === 0 ? true : false;
 };
+
+// checks through the nested array for which numbers are invalid, 
+// and return another nested array of invalid cards
+function findInvalidCards (array) {
+    let invalidCards = [];
+
+    for(let i = 0; i < array.length; i++) {
+        if(!validateCred(array[i])) 
+            invalidCards.push(array[i]);
+    };
+
+    return invalidCards
+};
