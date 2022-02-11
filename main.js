@@ -59,3 +59,25 @@ function findInvalidCards (array) {
 
     return invalidCards
 };
+
+//  identifies the credit card companies that 
+// have possibly issued these faulty numbers
+function invalidCardCompanies (array) {
+    let companies = [];
+
+    for(let i = 0; i < array.length; i++) {
+        if (array[i][0] === 3 && !companies.includes('Amex (American Expression)')) {
+            companies.push('Amex (American Expression)');
+        } else if (array[i][0] === 4 && !companies.includes('Visa')) {
+            companies.push('Visa');
+        } else if (array[i][0] === 5 && !companies.includes('Mastercard')) {
+            companies.push('Mastercard');
+        } else if (array[i][0] === 6 && !companies.includes('Discover')) {
+            companies.push('Discover');
+        } else {
+            companies.push('Company not found')
+        }
+    }
+
+    return companies;
+};
